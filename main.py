@@ -20,6 +20,11 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 allowed_sorts = ["price", "rating", "title", "id"]
 
+@app.get("/")
+async def baseURL():
+    return {"message": "Welcome to my backend API"}
+
+
 @app.get("/products")
 async def get_products(
     page: int = Query(1, ge=1),                # default page 1
