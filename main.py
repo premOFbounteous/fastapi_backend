@@ -10,10 +10,17 @@ from typing import Optional
 from fastapi import Query
 from fastapi import Query, HTTPException
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or "*" for testing
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # ---------------- PRODUCTS ----------------
 
 
