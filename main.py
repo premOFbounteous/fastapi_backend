@@ -83,12 +83,6 @@ async def get_products(
     }
 
 
-from fastapi import FastAPI, Query
-from typing import List
-from db import db  # MongoDB connection
-
-app = FastAPI()
-
 @app.get("/products/search")
 async def search_products(
     search_str: str = Query(..., min_length=1),
